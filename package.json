@@ -1,0 +1,26 @@
+{
+  "name": "child-proc",
+  "version": "0.0.0",
+  "description": "An extension to the child_process module that fixes problems like windows commands.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R list"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:johngeorgewright/node-child-proc.git"
+  },
+  "keywords": [
+    "child",
+    "process",
+    "spawn",
+    "exec",
+    "child_process"
+  ],
+  "author": "John Wright <johngeorge.wright@gmail.com>",
+  "license": "BSD",
+  "devDependencies": {
+    "expect.js": "0.2.0",
+    "mocha": "1.8.1"
+  }
+}
