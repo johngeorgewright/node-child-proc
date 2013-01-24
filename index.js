@@ -20,12 +20,12 @@ if(os.platform() === 'win32'){
    * @return {Object} Keys: name, args, opts
    */
   function winCmd(cmd, args, opts){
-    args.unshift(cmd);
-    args = ['/C', args.join(' ')]
-    cmd = 'cmd';
+    args = args || [];
+    opts = opts || {};
+    args = ['/C', cmd, args.join(' ')];
     opts.windowsVerbatimArguments = true;
     return {
-      name : cmd,
+      name : 'cmd',
       args : args,
       opts : opts
     };
@@ -39,7 +39,7 @@ if(os.platform() === 'win32'){
    */
   exports.spawn = function(cmd, args, opts){
     cmd = winCmd(cmd, args, opts);
-    base.spawn(cmd.name, cmd.args, cmd.opts);
+    return base.spawn(cmd.name, cmd.args, cmd.opts);
   };
 }
 

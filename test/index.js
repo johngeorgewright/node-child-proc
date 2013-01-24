@@ -18,8 +18,18 @@ describe('child-proc', function(){
     it('should run as expected in any environment', function(done){
       var proc = childProc.spawn('echo', ['hurrah']);
       proc.stdout.on('data', function(data){
-        expect(data.toString()).to.be("hurrah\n");
-        done();
+        expect(data.toString().trim()).to.be('hurrah');
+      });
+      proc.stderr.on('data', function(data){
+        throw new Error(data);
+      });
+      proc.on('exit', function(code){
+        if(code === 0){
+          done();
+        }
+        else{
+          throw new Error('Exit code: ' + code);
+        }
       });
     });
 
